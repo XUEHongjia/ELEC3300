@@ -404,8 +404,6 @@ void LCD_DrawChar ( uint16_t usC, uint16_t usP, const char cChar )
 }
 
 
-
-
 void LCD_DrawString ( uint16_t usC, uint16_t usP, const char * pStr )
 {
 	while ( * pStr != '\0' )
@@ -470,7 +468,6 @@ void LCD_DrawEllipse ( uint16_t usC, uint16_t usP, uint16_t SR, uint16_t LR, uin
 	/*
 	 *  Task 3 : Implement LCD_DrawEllipse by using LCD_DrawDot
 	 */
-	// step1, find the turning point value
 	const int Xcenter = usC ;
 	const int Ycenter = usP ;
 	const float AX = SR;
@@ -498,5 +495,30 @@ void LCD_DrawEllipse ( uint16_t usC, uint16_t usP, uint16_t SR, uint16_t LR, uin
 }
 
 void LCD_DrawName ( uint16_t usC, uint16_t usP, uint16_t usColor)
-{}
+{
+	LCD_DrawLine( (usC+1), ( usP+3 ), ( usC+9 ), ( usP+3 ), usColor );
+	LCD_DrawLine( (usC+3), ( usP+5 ), ( usC+7 ), ( usP+5 ), usColor );
+	LCD_DrawLine( (usC+5), ( usP+1 ), ( usC+5 ), ( usP+5 ), usColor );
+
+	LCD_DrawLine( (usC+3), ( usP+7 ), ( usC+7 ), ( usP+7 ), usColor );
+	LCD_DrawLine( (usC+3), ( usP+9 ), ( usC+7 ), ( usP+9 ), usColor );
+	LCD_DrawLine( (usC+3), ( usP+7 ), ( usC+3 ), ( usP+10 ), usColor );
+	LCD_DrawLine( (usC+7), ( usP+7 ), ( usC+7 ), ( usP+10 ), usColor );
+
+	LCD_DrawDot( (usC+4), (usP+11), usColor );
+	LCD_DrawDot( (usC+6), (usP+11), usColor );
+
+	LCD_DrawLine( (usC+1), ( usP+12 ), ( usC+9 ), ( usP+12 ), usColor );
+	LCD_DrawLine( (usC+1), ( usP+14 ), ( usC+4 ), ( usP+14 ), usColor );
+	LCD_DrawLine( (usC+4), ( usP+14 ), ( usC+4 ), ( usP+16 ), usColor );
+
+	LCD_DrawDot( (usC+3), (usP+13), usColor );
+	LCD_DrawDot( (usC+2), (usP+15), usColor );
+	LCD_DrawDot( (usC+1), (usP+16), usColor );
+
+	LCD_DrawLine( (usC+6), ( usP+14 ), ( usC+9 ), ( usP+14 ), usColor );
+	LCD_DrawLine( (usC+6), ( usP+16 ), ( usC+9 ), ( usP+16 ), usColor );
+	LCD_DrawDot( (usC+6), (usP+15), usColor );
+	LCD_DrawDot( (usC+9), (usP+15), usColor );
+}
 
